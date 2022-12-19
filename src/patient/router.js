@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const patientController = require("./controller")
+const authController = require("../util/authenticate")
 
+router.use(authController)
 
 router.route('/').post(patientController.addNew)
 
