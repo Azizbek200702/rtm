@@ -6,8 +6,8 @@ const authRouter = require("./src/auth/router")
 
 
 router.use('/doctor', doctorRouter);
-router.use('/login', authRouter);
 router.use('/patient', patientRouter);
+router.use('/login', authRouter);
 
 
 module.exports = router;
