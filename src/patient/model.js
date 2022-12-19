@@ -49,6 +49,14 @@ const patientSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    category: {
+        type: String,
+        default : false
+    },
+    check: {
+        type: Boolean,
+        default : false
+    },
     history : [
         {
             file: String,

@@ -5,6 +5,8 @@ const patientController = require("./controller")
 
 router.route('/').post(patientController.addNew)
 
+router.route('/check').post(patientController.check)
+
 router.route('/').get(patientController.getAll)
 
 router.route('/:id').get(patientController.getOne)
