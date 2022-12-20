@@ -2,10 +2,12 @@ const express = require('express')
 const app = express()
 const mongoose = require("mongoose")
 const appRouter = require("./router")
-
+const cors = require("cors");
+const {DATABASE_URL} = require("./config");
 app.use(express.json());
+app.use(cors());
 mongoose
-  .connect("mongodb://localhost:27017/clinik", {
+  .connect(DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

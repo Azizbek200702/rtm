@@ -14,35 +14,35 @@ module.exports = {
   },
   check: async function (req, res) {
     try {
-      const {patientId, title, top, doctor, description, list} = req.body
-      const patient = await Patient.findById(patientId)
-      if(!patient) {
-          return res.status(400).send("hotolik")
+      const { patientId, title, top, doctor, description, list } = req.body;
+      const patient = await Patient.findById(patientId);
+      if (!patient) {
+        return res.status(400).send("hotolik");
       }
       const history = {
-          title :title,
-          top : top,
-          doctor : doctor,
-          description : description,
-          list : list
-      }
-      patient.history.push(history)
-      await patient.save()    
+        title: title,
+        top: top,
+        doctor: doctor,
+        description: description,
+        list: list,
+      };
+      patient.history.push(history);
+      await patient.save();
 
-      return res.status(200).send("ok")
+      return res.status(200).send("ok");
     } catch (err) {
       return res.status(400).send(err);
     }
   },
   getAll: async function (req, res) {
     try {
-      const {category} = req.body
-      let patients = []
-     if(category){
-          patients = await Patient.find({category: category});
-     }else {
-          patients = await Patient.find({})
-     }
+      const { category } = req.body;
+      let patients = [];
+      if (category) {
+        patients = await Patient.find({ category: category });
+      } else {
+        patients = await Patient.find({});
+      }
       if (!patients) {
         return res.status(400).send("patientlarni olishda hatolik boldi ");
       }
@@ -51,7 +51,21 @@ module.exports = {
       return res.status(400).send(err);
     }
   },
+  // new api
+  getPasport: async function (req, res) {
+    try {
+      const pasport = req.query.passport;
+      const patients = await Patient.findOne({ passport: pasport });
 
+      if (patients) {
+        return res.status(200).json(patients);
+      } else {
+        return res.status(404).send("Not");
+      }
+    } catch (err) {
+      return res.status(400).send(err);
+    }
+  },
   getOne: async function (req, res) {
     try {
       let patientId = req.params.id;
