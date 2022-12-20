@@ -41,7 +41,7 @@ const patientSchema = mongoose.Schema({
         type : String,
         required :true
     },
-    tel : {
+    phone : {
         type : String,
         required : true
     },
