@@ -27,7 +27,11 @@ const doctorSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    category : {
+    room : {
+        type: String,
+        required: true
+    },
+    doctorType : {
         type: String,
         minlength: 3,
         maxlength : 50,

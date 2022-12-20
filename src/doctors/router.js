@@ -6,7 +6,8 @@ const doctorController = require("./controller")
 router.route('/').post(doctorController.addNew)
 
 router.route('/').get(doctorController.getAll)
-
+// new api
+router.route("/whois").get(doctorController.getDoctorByType);
 router.route('/:id').get(doctorController.getOne)
 
 router.route('/:id').delete(doctorController.delete)
