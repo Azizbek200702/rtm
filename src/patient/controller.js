@@ -27,6 +27,7 @@ module.exports = {
         list: list,
       };
       patient.history.push(history);
+      patient.check = true
       await patient.save();
 
       return res.status(200).send("ok");
