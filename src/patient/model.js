@@ -62,7 +62,9 @@ const patientSchema = mongoose.Schema({
             file: String,
             title: String,
             date: String,
+            doctorType:String,
             doctor: String,
+            doctorId:String,
             top: Boolean,
             description: String,
             list: [
